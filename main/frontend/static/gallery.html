@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Gallery — LAN File Sharing Design System</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    body {
+      padding: var(--space-8);
+      background-color: var(--surface-canvas);
+      color: var(--text-primary);
+    }
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-default);
+    }
+    .gallery-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+    }
+    .gallery-desc {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-1);
+    }
+    .theme-switcher-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1);
+      background-color: var(--surface-panel);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+    }
+    .gallery-section {
+      background-color: var(--surface-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-panel);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .section-title {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .component-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-3);
+    }
+    .token-card {
+      padding: var(--space-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-control);
+      background-color: var(--surface-panel);
+    }
+    .token-swatch {
+      height: 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-1);
+    }
+    .token-name {
+      font-size: var(--font-size-xs);
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+    }
+    .state-label {
+      font-size: var(--font-size-xs);
+      color: var(--text-muted);
+      width: 100px;
+    }
+    .modal-preview-box {
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-panel);
+      padding: var(--space-6);
+      background-color: var(--surface-subtle);
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-container">
+    <!-- Gallery Header & Theme Controls -->
+    <header class="gallery-header">
+      <div>
+        <h1 class="gallery-title">Design System Component Gallery</h1>
+        <p class="gallery-desc">Direction: Quiet enterprise utility (Microsoft Fluent / Windows 11 style). Zero gradients, 4px grid, max 6px radius.</p>
+      </div>
+
+      <div class="theme-switcher-bar">
+        <button id="theme-btn-light" class="btn btn-sm btn-secondary" onclick="setGalleryTheme('light')">
+          <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <span>Light Theme</span>
+        </button>
+        <button id="theme-btn-dark" class="btn btn-sm btn-ghost" onclick="setGalleryTheme('dark')">
+          <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <span>Dark Theme</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 1. Color Tokens -->
+    <section class="gallery-section">
+      <h2 class="section-title">1. Design Tokens & Palettes</h2>
+      <div class="token-grid">
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--surface-canvas);"></div>
+          <div class="token-name">--surface-canvas</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--surface-panel);"></div>
+          <div class="token-name">--surface-panel</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--surface-subtle);"></div>
+          <div class="token-name">--surface-subtle</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--accent-primary);"></div>
+          <div class="token-name">--accent-primary</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--status-success);"></div>
+          <div class="token-name">--status-success</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--status-warning);"></div>
+          <div class="token-name">--status-warning</div>
+        </div>
+        <div class="token-card">
+          <div class="token-swatch" style="background-color: var(--status-danger);"></div>
+          <div class="token-name">--status-danger</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Buttons -->
+    <section class="gallery-section">
+      <h2 class="section-title">2. Buttons (32px standard, 28px small, 4px radius)</h2>
+      
+      <div class="component-row">
+        <span class="state-label">Variants:</span>
+        <button class="btn btn-primary" id="btn-primary-demo">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <span>Primary Action</span>
+        </button>
+
+        <button class="btn btn-secondary">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+          <span>Secondary Action</span>
+        </button>
+
+        <button class="btn btn-ghost">
+          <span>Tertiary / Ghost</span>
+        </button>
+
+        <button class="btn btn-destructive">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          <span>Destructive</span>
+        </button>
+      </div>
+
+      <div class="component-row">
+        <span class="state-label">Sizes & Icons:</span>
+        <button class="btn btn-primary btn-sm">Small Primary (28px)</button>
+        <button class="btn btn-secondary btn-sm">Small Secondary (28px)</button>
+        <button class="btn btn-secondary btn-icon" data-tooltip="Copy item">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+        </button>
+        <button class="btn btn-ghost btn-icon" data-tooltip="Settings">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+
+      <div class="component-row">
+        <span class="state-label">Disabled States:</span>
+        <button class="btn btn-primary" disabled>Disabled Primary</button>
+        <button class="btn btn-secondary" disabled>Disabled Secondary</button>
+        <button class="btn btn-ghost" disabled>Disabled Ghost</button>
+        <button class="btn btn-destructive" disabled>Disabled Destructive</button>
+      </div>
+    </section>
+
+    <!-- 3. Form Controls -->
+    <section class="gallery-section">
+      <h2 class="section-title">3. Form Controls & Inputs (32px height, 2px focus ring)</h2>
+      
+      <div class="component-grid-2col">
+        <div>
+          <div class="form-group">
+            <label class="form-label" for="inp-default">Username (Default State)</label>
+            <input type="text" id="inp-default" class="form-input" value="Devraj" placeholder="Enter username">
+            <span class="form-hint">Must be unique on local network.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inp-disabled">Device ID (Read-only / Disabled)</label>
+            <input type="text" id="inp-disabled" class="form-input mono" value="d6f284b3910c" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sel-priority">Transfer Priority (Select Dropdown)</label>
+            <select id="sel-priority" class="form-select">
+              <option value="HIGH">High (Maximum bandwidth slice)</option>
+              <option value="MEDIUM" selected>Medium (Standard fair share)</option>
+              <option value="LOW">Low (Background transfer)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-group">
+            <label class="form-label">Download Directory (Action Row)</label>
+            <div class="input-action-row">
+              <input type="text" class="form-input" value="C:\Users\Devraj\Downloads" readonly>
+              <button class="btn btn-secondary">Browse...</button>
+            </div>
+            <span class="form-hint">Received files are streamed directly into this folder.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Adaptive Transfer Engine (Card Checkbox)</label>
+            <label class="checkbox-card">
+              <input type="checkbox" class="form-checkbox" checked>
+              <div class="checkbox-content">
+                <span class="checkbox-title">Adaptive Dynamic Chunk Scaling (AIMD)</span>
+                <span class="checkbox-desc">Dynamically scales chunks from 32 KB to 2 MB based on real-time RTT feedback.</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Toggle Switch Control</label>
+            <label class="toggle-label">
+              <span class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </span>
+              <span class="checkbox-title">Auto-accept trusted LAN transfers</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Badges & Status Indicators -->
+    <section class="gallery-section">
+      <h2 class="section-title">4. Status Badges & Chips (Low saturation, paired with icon)</h2>
+      <div class="component-row">
+        <span class="badge badge-success">
+          <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Completed</span>
+        </span>
+
+        <span class="badge badge-info">
+          <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/></svg>
+          <span>In progress</span>
+        </span>
+
+        <span class="badge badge-warning">
+          <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Queued</span>
+        </span>
+
+        <span class="badge badge-danger">
+          <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          <span>Failed</span>
+        </span>
+
+        <span class="badge badge-neutral">
+          <span>Cancelled</span>
+        </span>
+
+        <span class="status-indicator">
+          <span class="status-dot online"></span>
+          <span>Online</span>
+        </span>
+
+        <span class="status-indicator">
+          <span class="status-dot offline"></span>
+          <span>Offline</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- 5. Data Table -->
+    <section class="gallery-section">
+      <h2 class="section-title">5. Data Table (Sticky header, tabular numerals, 38px row height)</h2>
+      
+      <div class="data-table-container">
+        <div class="table-toolbar">
+          <div class="table-toolbar-left">
+            <input type="text" class="form-input" placeholder="Search transfers..." style="max-width: 240px;">
+            <select class="form-select" style="max-width: 150px;">
+              <option value="">All statuses</option>
+              <option value="COMPLETED">Completed</option>
+              <option value="FAILED">Failed</option>
+            </select>
+          </div>
+          <div class="table-toolbar-right">
+            <button class="btn btn-secondary btn-sm">Export CSV</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 100px;">Direction</th>
+              <th>File / Folder name</th>
+              <th>Peer</th>
+              <th class="text-right">Size</th>
+              <th>Status</th>
+              <th class="text-right">Avg speed</th>
+              <th>Integrity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="badge badge-info">
+                  <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="17" x2="7" y1="7" y2="17"/><polyline points="17 17 7 17 7 7"/></svg>
+                  <span>In</span>
+                </span>
+              </td>
+              <td><span class="truncate" title="Dataset-experiment-run-2026.zip">Dataset-experiment-run-2026.zip</span></td>
+              <td>Devraj (10.16.206.253)</td>
+              <td class="text-right tabular-nums">1.42 GB</td>
+              <td><span class="badge badge-success">Completed</span></td>
+              <td class="text-right tabular-nums">74.8 MB/s</td>
+              <td><span class="badge badge-success"><svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="badge badge-neutral">
+                  <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  <span>Out</span>
+                </span>
+              </td>
+              <td><span class="truncate" title="Project-Report-Final.docx">Project-Report-Final.docx</span></td>
+              <td>Alex-Desktop (10.16.206.104)</td>
+              <td class="text-right tabular-nums">28.4 MB</td>
+              <td><span class="badge badge-danger">Failed</span></td>
+              <td class="text-right tabular-nums">12.1 MB/s</td>
+              <td><span class="text-muted">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. Progress Bars & Active Transfers -->
+    <section class="gallery-section">
+      <h2 class="section-title">6. Progress Indicators (4px thin bar, tabular numbers, no gradient)</h2>
+      
+      <div class="progress-box">
+        <div class="progress-header">
+          <span><strong>Ubuntu-24.04-desktop.iso</strong> &bull; Receiving from Devraj</span>
+          <span class="tabular-nums"><strong>45%</strong> &bull; 1.80 GB / 4.00 GB &bull; 68.4 MB/s (32s remaining)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 45%;"></div>
+        </div>
+      </div>
+
+      <div class="progress-box" style="margin-top: var(--space-4);">
+        <div class="progress-header">
+          <span><strong>Models-Checkpoint.pt</strong> &bull; Completed</span>
+          <span class="tabular-nums"><strong>100%</strong> &bull; 850 MB / 850 MB &bull; 82.5 MB/s</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 100%; background-color: var(--status-success);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Empty State -->
+    <section class="gallery-section">
+      <h2 class="section-title">7. Empty State Pattern (Static icon, clear guidance, scan action)</h2>
+      
+      <div class="empty-state">
+        <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/>
+        </svg>
+        <h3 class="empty-state-title">No devices found</h3>
+        <p class="empty-state-desc">Peers on the same Wi-Fi or subnet running LAN File Sharing will appear automatically. Ensure your network allows UDP broadcast.</p>
+        <button class="btn btn-secondary btn-sm">
+          <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+          <span>Scan again</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 8. Dialog / Modal Preview -->
+    <section class="gallery-section">
+      <h2 class="section-title">8. Modal Dialog Pattern (Structured chrome, 6px radius, neutral shadows)</h2>
+      <div class="modal-preview-box">
+        <div class="modal-dialog" style="transform: none; position: static;">
+          <div class="modal-header">
+            <h3 class="modal-title">Incoming File Request</h3>
+            <span class="badge badge-info">Resume available</span>
+          </div>
+          <div class="modal-body">
+            <div style="margin-bottom: var(--space-3);">
+              <div style="font-size: var(--font-size-xs); color: var(--text-muted);">Sender</div>
+              <div style="font-weight: var(--font-weight-semibold); color: var(--text-primary);">Devraj — PC-Workstation</div>
+            </div>
+            <div style="padding: var(--space-3); border-radius: var(--radius-control); background-color: var(--surface-subtle); border: 1px solid var(--border-subtle); margin-bottom: var(--space-3);">
+              <div style="font-weight: var(--font-weight-semibold); color: var(--text-primary); word-break: break-all;">MachineLearningDatasets.tar.gz</div>
+              <div style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-top: 2px;" class="tabular-nums">2.45 GB &bull; Resumes from 820 MB</div>
+            </div>
+            <p style="font-size: var(--font-size-xs); color: var(--text-secondary); line-height: 1.4;">
+              File will be streamed directly into your configured Downloads folder.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary">Reject</button>
+            <button class="btn btn-primary">Accept & Download</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Toast Notifications -->
+    <section class="gallery-section">
+      <h2 class="section-title">9. Toast Notifications (Flat surface, icon + label, subtle overlay shadow)</h2>
+      <div class="component-row">
+        <div class="toast" style="position: static;">
+          <svg class="toast-icon success icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="toast-text">Transfer complete: Report-2026.pdf (SHA-256 verified)</div>
+        </div>
+
+        <div class="toast" style="position: static;">
+          <svg class="toast-icon danger icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          <div class="toast-text">Connection reset by peer: 10.16.206.104</div>
+        </div>
+
+        <div class="toast" style="position: static;">
+          <svg class="toast-icon info icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <div class="toast-text">Broadcasting discovery beacon across LAN...</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script>
+    function setGalleryTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const btnLight = document.getElementById('theme-btn-light');
+      const btnDark = document.getElementById('theme-btn-dark');
+      if (theme === 'light') {
+        btnLight.className = 'btn btn-sm btn-secondary';
+        btnDark.className = 'btn btn-sm btn-ghost';
+      } else {
+        btnLight.className = 'btn btn-sm btn-ghost';
+        btnDark.className = 'btn btn-sm btn-secondary';
+      }
+    }
+  </script>
+</body>
+</html>

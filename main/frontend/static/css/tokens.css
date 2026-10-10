@@ -1,0 +1,208 @@
+/**
+ * LAN File Sharing - Design System Tokens
+ * Direction: Quiet Enterprise Utility
+ * Strict 4px spacing grid, 4px/6px radii, AA/AAA contrast ratios
+ */
+
+:root {
+  /* =========================================================================
+     LIGHT THEME (Default)
+     ========================================================================= */
+  --theme-name: "light";
+
+  /* Surfaces & Canvas (Subtle layering, 0% blur) */
+  --surface-canvas: #f8f9fa;
+  --surface-panel: #ffffff;
+  --surface-card: #ffffff;
+  --surface-subtle: #f1f3f5;
+  --surface-hover: #e9ecef;
+  --surface-active: #dee2e6;
+  --surface-selected: #ebf3fc;
+
+  /* Borders (1px structural definition) */
+  --border-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-strong: #94a3b8;
+  --border-focus: #0f6cbd;
+
+  /* Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-disabled: #94a3b8;
+  --text-on-accent: #ffffff;
+
+  /* Primary Accent: Enterprise Slate Blue (#0F6CBD - Microsoft Fluent) */
+  --accent-primary: #0f6cbd;
+  --accent-hover: #115ea3;
+  --accent-pressed: #0c3b5e;
+  --accent-subtle: #ebf3fc;
+  --accent-border: #0f6cbd;
+  --accent-muted: #cfe4fa;
+
+  /* Semantic Status Colors (Desaturated, paired with label + icon) */
+  --status-success: #0e703c;
+  --status-success-bg: #f1faf3;
+  --status-success-border: #bbf0cb;
+
+  --status-warning: #b25900;
+  --status-warning-bg: #fffbf2;
+  --status-warning-border: #fde2b4;
+
+  --status-danger: #c42b1c;
+  --status-danger-bg: #fdf3f2;
+  --status-danger-border: #f8b8b0;
+
+  /* Component & Semantic Aliases */
+  --danger: var(--status-danger);
+  --danger-bg: var(--status-danger-bg);
+  --danger-border: var(--status-danger-border);
+  --surface-backdrop: rgba(15, 23, 42, 0.45);
+
+  --status-info: #0f6cbd;
+  --status-info-bg: #ebf3fc;
+  --status-info-border: #cfe4fa;
+
+  /* Shadows (Restrained, only for true floating overlays) */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-overlay: 0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  --shadow-modal: 0 12px 28px 0 rgba(0, 0, 0, 0.14), 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+  --shadow-dialog: var(--shadow-modal);
+
+  /* Scrollbars */
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+  --scrollbar-track: transparent;
+}
+
+/* =========================================================================
+   DARK THEME
+   Neutral charcoal palette (#141416 / #1E1E22 / #28282D).
+   No navy, no purple, no glowing borders.
+   ========================================================================= */
+[data-theme="dark"] {
+  --theme-name: "dark";
+
+  /* Surfaces & Canvas */
+  --surface-canvas: #141416;
+  --surface-panel: #1b1b1f;
+  --surface-card: #222226;
+  --surface-subtle: #29292e;
+  --surface-hover: #323238;
+  --surface-active: #3c3c44;
+  --surface-selected: #182b40;
+
+  /* Borders */
+  --border-subtle: #2a2a30;
+  --border-default: #383840;
+  --border-strong: #52525c;
+  --border-focus: #479ef5;
+
+  /* Typography Colors */
+  --text-primary: #f3f3f5;
+  --text-secondary: #c7c7cf;
+  --text-muted: #8e8e9a;
+  --text-disabled: #585864;
+  --text-on-accent: #0a101d;
+
+  /* Primary Accent: High-contrast calm blue (#479EF5) */
+  --accent-primary: #479ef5;
+  --accent-hover: #62abf7;
+  --accent-pressed: #2886e0;
+  --accent-subtle: #172a3e;
+  --accent-border: #479ef5;
+  --accent-muted: #1d3550;
+
+  /* Semantic Status Colors (Dark mode adjusted) */
+  --status-success: #57b97d;
+  --status-success-bg: #12281b;
+  --status-success-border: #235433;
+
+  --status-warning: #f19d38;
+  --status-warning-bg: #2d1d09;
+  --status-warning-border: #603e15;
+
+  --status-danger: #f1707a;
+  --status-danger-bg: #2b1417;
+  --status-danger-border: #5c2227;
+
+  /* Component & Semantic Aliases */
+  --danger: var(--status-danger);
+  --danger-bg: var(--status-danger-bg);
+  --danger-border: var(--status-danger-border);
+  --surface-backdrop: rgba(0, 0, 0, 0.65);
+
+  --status-info: #479ef5;
+  --status-info-bg: #172a3e;
+  --status-info-border: #1d3550;
+
+  /* Shadows */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-overlay: 0 6px 18px 0 rgba(0, 0, 0, 0.45), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+  --shadow-modal: 0 16px 36px 0 rgba(0, 0, 0, 0.6), 0 4px 12px 0 rgba(0, 0, 0, 0.4);
+  --shadow-dialog: var(--shadow-modal);
+
+  /* Scrollbars */
+  --scrollbar-thumb: #3e3e48;
+  --scrollbar-thumb-hover: #585864;
+  --scrollbar-track: transparent;
+}
+
+/* =========================================================================
+   COMMON TOKENS (Shared across themes)
+   ========================================================================= */
+:root {
+  /* Typography Scale */
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", "SFMono-Regular", "Liberation Mono", Menlo, monospace;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.45;
+  --line-height-relaxed: 1.6;
+
+  /* 4px Strict Spacing Grid */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Corner Radius (Hard constraint: max 6px) */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-control: 4px;
+  --radius-panel: 6px;
+
+  /* Motion & Transitions (120ms-160ms, functional only) */
+  --motion-fast: 120ms cubic-bezier(0, 0, 0.2, 1);
+  --motion-normal: 160ms cubic-bezier(0, 0, 0.2, 1);
+
+  /* Layout Dimensions */
+  --nav-rail-width: 220px;
+  --nav-rail-collapsed: 48px;
+  --header-height: 44px;
+  --status-bar-height: 28px;
+  --statusbar-height: var(--status-bar-height);
+
+  /* Component Radii Aliases */
+  --radius-card: var(--radius-panel);
+  --radius-dialog: var(--radius-panel);
+}
